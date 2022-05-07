@@ -1,0 +1,52 @@
+/********** solving without using sort() function ***********/
+Method 1-
+// Naive approach ...use 2 for loops
+class Solution {
+public:
+    void sortColors(vector<int>& nums) 
+    {
+       for(int i=0;i<nums.size();i++)
+        { 
+           for(int j=i+1;j<nums.size();j++)
+           {
+               if(nums[i]>nums[j])
+                   swap(nums[i],nums[j]);
+           }
+        }
+    }
+};
+
+                                           Method 2-
+// take a hashmap or simply count the no. of 0's,1's ans 2's then place them in the vector
+but this will again consume extra space ans O(n) TC....O(n) for counting then another O(n) for filling
+
+                                            Method 3-
+ // taking 3 pointers...low,high and mid. This approach is also called DUTCH NATIONAL FLAG ALGORITHM
+ // if mid==0, swap it by low, if mid==2, swap it by high
+ //This approach simply works in single traversal
+ class Solution {
+public:
+    void sortColors(vector<int>& v) 
+    {
+       int low=0,mid=0,high=v.size()-1;
+        for(int i=0;i<v.size();i++)
+        {
+            if(mid>high) break;
+            if(v[mid]==0)
+            {
+                swap(v[mid],v[low]);
+                low++;
+                mid++;
+            }   
+            else if(v[mid]==2)
+            {
+                 swap(v[mid],v[high]);
+                high--;
+            }
+            else 
+                mid++;
+            
+        }
+    }
+};
+ 
