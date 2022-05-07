@@ -1,0 +1,45 @@
+# DSA_Practice_sheet
+Just placement preparation
+Method 1-
+//Brute force approach can be using two for loops and then search for repeated element ...O(n^2)
+
+Method 2-
+//Using vector but it uses extra space
+class Solution {
+public:
+    int findDuplicate(vector<int>& v) {
+       sort(v.begin(),v.end());
+        for(int i=1;i<v.size();i++)
+        {
+            if(v[i]==v[i-1])
+                return v[i];
+        }
+        return 0;}
+};
+                
+                                    Method 3-
+       // could use frequency array initializing all elements with 0
+       
+                                    Method 4-
+     // Since there is only one element repeated, a cycle is formed...
+     // TC- O(n)    SC- O(1)     
+     class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+    
+ int slow=nums[0];
+        int fast=nums[0];
+        do{
+            slow=nums[slow];
+            fast= nums[nums[fast]];
+        }
+        while(slow!=fast);
+        fast= nums[0];
+        while(slow!=fast){
+            slow=nums[slow];
+            fast=nums[fast];
+        }
+        return slow;
+    }
+};
+                                    
