@@ -23,7 +23,7 @@ but this will again consume extra space ans O(n) TC....O(n) for counting then an
                                             Method 3-
  // taking 3 pointers...low,high and mid. This approach is also called DUTCH NATIONAL FLAG ALGORITHM
  // if mid==0, swap it by low, if mid==2, swap it by high
- //This approach simply works in single traversal
+ //This approach simply works in single traversal,....TC- O(n) and SC-O(1)
  class Solution {
 public:
     void sortColors(vector<int>& v) 
