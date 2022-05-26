@@ -1,0 +1,18 @@
+// given unsigned no. of 32 length, find number of 1's present in it.
+    int hammingWeight(uint32_t n) {
+         int cnt=0;
+         while(n)
+        {
+            n= n & n-1;   //TC will be the no. of 1's i.e, 32 at worst, so O(1)
+            cnt++;
+        }
+ return cnt;
+    }
+    
+    
+ // I have also tried to convert it to a string and then count, but however that didn't work
+     string s=to_string(n);
+     for(auto x:s){
+           if(x=='1')
+           cnt++;
+        
