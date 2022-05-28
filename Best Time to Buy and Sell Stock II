@@ -1,0 +1,17 @@
+/*******
+to find max profit on every purchase....buy first then immediately have to sell it before buying another
+Input: prices = [7,1,5,3,6,4]
+Output: 7
+ Logic: find the local maxima and minima....on local minima, we will purchase and sell it on local maxima
+ further optimizing...buy it then sell it if it is greater than price on next day.
+***********/
+
+    int maxProfit(vector<int>& v) {
+        int ans=0;
+        for(int i=0;i<v.size()-1;i++)
+        {
+            if(v[i+1]>v[i])
+                ans += (v[i+1]-v[i]);
+        }
+        return ans;
+    }
