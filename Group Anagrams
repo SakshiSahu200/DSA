@@ -1,0 +1,20 @@
+//Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+class Solution {            // TC- O(n) may be
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+      vector<vector<string>>ans;
+        unordered_map<string,vector<string>>h;
+        for(auto x:strs)
+        {
+            string temp=x;
+            sort(x.begin(),x.end());
+            h[x].push_back(temp);
+        }
+        for(auto x:h){
+            vector<string>res=x.second;
+            ans.push_back(res);
+        }
+        return ans;}
+};
