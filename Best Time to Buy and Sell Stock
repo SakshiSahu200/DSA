@@ -21,4 +21,18 @@
     }
     
     
+    // can track the max and min from starting for further optimization
     
+    class Solution {
+public:
+    int maxProfit(vector<int>& v) {
+       int maxProft=0;
+        int  minSoFar=v[0];
+        for(int i=0;i<v.size();i++)
+        {
+            minSoFar = min(minSoFar, v[i]);
+            maxProft= max(maxProft, v[i]-minSoFar);
+        }
+        return maxProft;
+    }
+};
