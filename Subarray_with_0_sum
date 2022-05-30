@@ -1,0 +1,16 @@
+
+// Efficient- Store prefix sum array in hash table
+int b[n];
+int sum=0;
+unordered_set<int,int>h;
+for(int i=0;i<n;i++)
+{
+    sum+=a[i];
+    if(sum==0) return true;
+    if(h.find(sum)==h.end())
+        h.insert(sum);
+    else
+        return true;
+}
+return false;
+}
