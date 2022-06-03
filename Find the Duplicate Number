@@ -18,7 +18,7 @@ public:
 };
                 
                                     Method 3-
-       // could use frequency array initializing all elements with 0
+       // could use frequency array initializing all elements with 0 or hashing, but same...it will consume extra space
        
                                     Method 4-
      // Since there is only one element repeated, a cycle is formed...
