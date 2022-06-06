@@ -1,0 +1,66 @@
+//Method -1
+
+ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+          
+           if(headA==NULL || headB==NULL) return NULL;
+    unordered_set<ListNode *>h;
+    for(ListNode* curr=headA;curr!=NULL;curr=curr->next)
+        h.insert(curr);
+   ListNode *ptr=headB;
+    while(ptr!=NULL){
+        if(h.find(ptr)!=h.end())
+            return ptr;
+        ptr=ptr->next;
+    }
+    return ptr;
+    
+    }
+    
+    
+ //Method 2   ------------------------------------------------------------
+ 
+  ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+          ListNode *d1=headA;
+          ListNode *d2=headB;
+          while(d1!=d2){
+              d1=(d1!=NULL)?d1->next: headB;
+              d2=(d2!=NULL)?d2->next: headA;
+              
+          }
+        return d1;
+    }
+    
+    //Method 3 --------------------------------------------------
+
+ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+          ListNode *curr=headA;
+          ListNode *ptr=headB;
+        if(headA==NULL ||headB ==NULL) return NULL;
+        int cntA=0,cntB=0;
+          while(curr!=NULL){
+              cntA++;
+              curr=curr->next;
+          }
+        while(ptr!=NULL){
+              cntB++;
+              ptr=ptr->next;
+          }
+        curr=headA;
+           ptr=headB;
+        if(cntA>cntB){
+        
+        for(int i=0;i<cntA-cntB;i++)
+            curr=curr->next;}
+        else if(cntA<cntB){
+         
+              for(int i=0;i<cntB-cntA;i++)
+            ptr=ptr->next;
+        }
+        while(curr!=NULL && ptr!=NULL){
+            if(curr==ptr)
+                return curr;
+            curr=curr->next;
+            ptr=ptr->next;
+        }
+        return ptr;
+    }
