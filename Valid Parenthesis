@@ -1,6 +1,6 @@
 
 
-/***********************
+/*********************** Method - 1 **********************
 class Solution {
 public:
     bool isValid(string s) {
@@ -30,7 +30,7 @@ public:
                        return false;  }
 };
 
-*******************/
+*******************/  Method - 2 **********************
 
 
 
@@ -68,3 +68,41 @@ public:
     }
     
 };
+
+/************************************** Method - 3 **********************
+
+ bool isValid(string s)
+    {
+        stack<int>st;
+        
+        for(int i=0;i<s.length();i++)
+        {
+            
+        if(s[i]=='(' || s[i]=='{' ||s[i]=='[' ){
+            st.push(s[i]);
+        }
+               else if(st.empty()==true && s.length()!=0){
+                return false;}
+            else{
+                
+            int k=st.top();
+            st.pop();
+            if(s[i]==')')
+            {
+                if(k!='(')
+                    return false;
+            }
+             if(s[i]=='}')
+            {
+                if(k!='{')
+                    return false;
+            }
+             if(s[i]==']')
+            {
+                if(k!='[')
+                    return false;
+            }
+        }}
+        if(!st.empty()) return false;
+        return true;
+    }
