@@ -1,0 +1,24 @@
+/* Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+************Keeping  two pointer approach************/
+
+ int lengthOfLongestSubstring(string s) {
+        int i=0,res=0;
+        unordered_set<int>h;
+        int cnt=0;
+        for(int j=0;j<s.length();j++)
+        {
+            while(h.find(s[j])!=h.end())
+            {
+                h.erase(s[i]);
+                cnt--;
+                i++;
+            }
+            h.insert(s[j]);
+            cnt++;
+            res= max(res,cnt);
+        }
+        return res;
+    }
