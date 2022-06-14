@@ -1,0 +1,41 @@
+
+/***********************************************************   Method -1 ********************
+Brute force-  Use two for loops and place the duplicate elements in resultant vector
+
+
+/***********************************************************   Method -2 ********************
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        unordered_set<int>s;                     // taking extra space
+        unordered_set<int>ans;
+        vector<int>v;
+        for(auto x:nums)
+        {
+            if(s.find(x)!=s.end())
+                ans.insert(x);
+            else
+                s.insert(x);
+        }
+        for(auto x:ans)
+        {
+            v.push_back(x);
+        }
+        return v;
+    }
+};
+
+/***********************************************************   Method -3 ********************
+
+ vector<int> findDuplicates(vector<int>& nums) {
+        vector<int>v;
+      sort(nums.begin(),nums.end());              //without takingn extra space
+        
+        for(int i=0;i<nums.size()-1;i++)
+        {
+            if(nums[i]==nums[i+1])
+                v.push_back(nums[i]);
+        }
+        return v;}
+        
+        
