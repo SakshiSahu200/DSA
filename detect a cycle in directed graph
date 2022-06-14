@@ -1,0 +1,68 @@
+ bool cycle(int s, vector<int>adj[], int vis[], int dfsVis[])
+    {
+        vis[s]=1;
+        dfsVis[s]=1;
+        for(auto x:adj[s])
+        {
+             if(!vis[x])
+            {
+                if(cycle(x,adj, vis,dfsVis))
+                return true;
+            }
+            else if(dfsVis[x]==true)
+            {
+                return true;
+            }
+        }
+        dfsVis[s]=0;
+        return false;
+    }
+    bool isCyclic(int V, vector<int> adj[]) {
+        // code here
+        int vis[V],dfsVis[V];
+        memset(vis,0,sizeof vis);
+        memset(dfsVis,0,sizeof dfsVis);
+        for(int i=0;i<V;i++)
+        {
+            if(vis[i]==false){
+                if( cycle(V,adj,vis,dfsVis))
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    /*********************************************************************
+    
+        bool cycle(int s, vector<int>adj[], vector<bool>&vis, vector<bool>&dfsVis)
+    {
+        vis[s]=true;
+        dfsVis[s]=true;
+        for(auto x:adj[s])
+        {
+             if(!vis[x])
+            {
+                if(cycle(x,adj, vis,dfsVis))
+                return true;
+            }
+            else if(vis[x]== true&& dfsVis[x]==true)
+            {
+                return true;
+            }
+        }
+        dfsVis[s]=false;
+        return false;
+    }
+    bool isCyclic(int V, vector<int> adj[]) {
+        // code here
+        vector<bool>vis(V,false),dfsVis(V,false);
+        for(int i=0;i<V;i++)
+        {
+            if(vis[i]==false){
+                if( cycle(V,adj,vis,dfsVis))
+                return true;
+            }
+        }
+        return false;
+    }
