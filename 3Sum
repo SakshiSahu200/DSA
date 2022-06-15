@@ -1,0 +1,10 @@
+nums[i] + nums[j] + nums[k] == 0.
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+
+/************  Method -1  *******************
+
+Brute force- can use 3 for loops...from i, j= i+1, k= j+1....
+
+/************  Method -2 ********************
+
