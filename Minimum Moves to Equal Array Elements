@@ -1,0 +1,21 @@
+//Given an integer array nums of size n, return the minimum number of moves required to make all array elements equal.
+In one move, you can increment n - 1 elements of the array by 1.
+Input: nums = [1,2,3]
+Output: 3
+Explanation: Only three moves are needed (remember each move increments two elements):
+[1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
+ 
+Solution:  Adding 1 to (n-1) elements is equivalent to subtracting 1 from one of the elements and adding 1 to all elements.
+Adding 1 to all elements does not change anything in terms of equality. So we must find the min number of (subtract 1 from any element) operations. 
+The only way to make all elements equal this way is to make them all equal to the min element of the array.
+Hence, number of moves = sum(array) - n*min_element
+
+ int minMoves(vector<int>& nums) {
+        int sum=0,n= nums.size();
+      for(int i=0;i<nums.size();i++)
+      {
+          sum+=nums[i];
+      }
+        sort(nums.begin(),nums.end());
+        return sum-(n* nums[0]);
+    }
