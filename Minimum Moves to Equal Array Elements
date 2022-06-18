@@ -5,7 +5,14 @@ Output: 3
 Explanation: Only three moves are needed (remember each move increments two elements):
 [1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
  
-Solution:  Adding 1 to (n-1) elements is equivalent to subtracting 1 from one of the elements and adding 1 to all elements.
+Solution:
+/***************** Method -1  *******************
+ Brute force- can run a loop till n-1, first sort them and then increment (n-1) elements , again go back and sort them, again increment starting (n-1) elements and so on.
+
+
+/*************** Method -2 ************************
+
+Adding 1 to (n-1) elements is equivalent to subtracting 1 from one of the elements and adding 1 to all elements.
 Adding 1 to all elements does not change anything in terms of equality. So we must find the min number of (subtract 1 from any element) operations. 
 The only way to make all elements equal this way is to make them all equal to the min element of the array.
 Hence, number of moves = sum(array) - n*min_element
