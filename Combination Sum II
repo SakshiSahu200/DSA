@@ -1,0 +1,35 @@
+/***************
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: 
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]   **************/
+
+class Solution {
+public:
+    void combo(vector<int>& nums,int target,vector<int>&v,  vector<vector<int>>&ans, int ind)
+    {
+        if(target==0){
+            ans.push_back(v);
+            return;
+        }
+        for(int i=ind ;i<nums.size();i++)
+        {
+            if(i>ind && nums[i]==nums[i-1]) continue;
+            if(nums[i] >target) break;
+            v.push_back(nums[i]);
+            combo(nums, target-nums[i] , v, ans, i+1);
+            v.pop_back();   
+        }
+    }
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        vector<int>v;
+        vector<vector<int>>ans;
+        sort(candidates.begin(),candidates.end());         //sorting so that duplicates come together
+        combo(candidates, target, v, ans, 0);
+        return ans;
+    }
+};
