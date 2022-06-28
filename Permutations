@@ -1,0 +1,30 @@
+//Print all permutations
+
+
+    void permut(vector<int>& nums, vector<int>&v,vector<vector<int>>&ans, int vis[])
+    {
+         if(nums.size()==v.size())
+         {
+             ans.push_back(v);
+             return;
+         }
+        for(int i=0;i<nums.size();i++)
+        {
+            if(vis[i]==0){
+                vis[i]=1;
+                v.push_back(nums[i]);
+                permut(nums,v,ans,vis);
+                v.pop_back();     //so that we can start with another next permutation
+                vis[i]=0;
+        }
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<int>v;
+        vector<vector<int>>ans;
+        // vector<int>vis(nums.size(),0);
+        int vis[nums.size()];
+        for(int i=0;i<nums.size();i++) vis[i]=0;
+        permut(nums,v,ans,vis);
+        return ans;
+    }
