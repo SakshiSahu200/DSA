@@ -1,0 +1,33 @@
+Input: s = "aab"
+Output: 0          //since their freq already differ, so no deletion required
+/*********************************************************/
+
+class Solution {
+public:
+    int minDeletions(string s) {
+        priority_queue<int>pq;
+        unordered_map<int,int>h;
+        for(int i=0;i<s.length();i++)
+        {
+            // pq.push(s[i]-'a');
+            h[s[i]-'a']++;
+        }
+        for(auto x:h)
+        {
+            pq.push(x.second);
+        }
+        int cnt=0;
+        while(!pq.empty())
+        {
+            int k=pq.top();
+            pq.pop();
+            if(pq.top()==k && pq.empty()==false)
+            {
+                cnt++;
+                if(--k > 0)
+                pq.push(k);
+            }
+        }
+        return  cnt;
+    }
+};
