@@ -1,3 +1,6 @@
+ /************************************* USING BFS  ****************************/
+ // TC - O(n)   SC= O(n)
+ 
  bool checkCycle(int i, int n, vector<int>&vis, vector<int> adj[])
     {
         queue<pair<int,int>>q;
@@ -27,6 +30,31 @@
         {
             if(!vis[i]){
             if(checkCycle(i,V,vis,adj))  return true;}
+        }
+        return false;
+    }
+
+
+ /************************************* USING DFS  ****************************/
+bool checkCycle(int node, int prev, vector<int>&vis, vector<int> adj[])
+    {
+        vis[node]=1;
+        for(auto x:adj[node])
+        {
+            if(vis[x]==0){
+                if(checkCycle(x,node,vis,adj)) return true;
+            }
+            else if(x!=prev) return true;
+        }
+        return false;
+    }
+    bool isCycle(int V, vector<int> adj[]) {
+        // Code here
+        vector<int>vis(V+1,0);
+        for(int i=0;i<V;i++)
+        {
+            if(!vis[i]){
+            if(checkCycle(i,-1,vis,adj))  return true;}
         }
         return false;
     }
