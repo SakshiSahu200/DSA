@@ -1,0 +1,28 @@
+  // print level order traversal level by level
+  //Input: root = [3,9,20,null,null,15,7]
+  //Output: [[3],[9,20],[15,7]]
+  
+  vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>>ans;
+        if(root==NULL) return ans;
+        queue<TreeNode*>q;
+        q.push(root);
+        while(!q.empty())
+        {
+            vector<int>v;
+            int sz=q.size();
+            for(int i=0;i<sz;i++)
+            {
+                TreeNode* k= q.front();
+                q.pop();
+                if(k->left!=NULL) 
+                q.push(k->left);
+                if(k->right!=NULL)
+                q.push(k->right);
+                v.push_back(k->val);
+            }
+            ans.push_back(v);
+            
+        }
+        return ans;
+    }
