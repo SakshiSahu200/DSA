@@ -1,0 +1,19 @@
+Take a stack, push first node (root) into the stack then push root->right into the stack and then left and so on.
+
+ vector<int> preorderTraversal(TreeNode* root) {
+        vector<int>v;
+        if(root==NULL) return v;
+        stack<TreeNode*>st;
+        st.push(root);
+        while(!st.empty())
+        {
+            TreeNode* k=st.top();
+            st.pop();
+            v.push_back(k->val);
+            if(k->right!=NULL)
+                st.push(k->right);
+             if(k->left!=NULL)
+                st.push(k->left);
+        }
+        return v;
+    }
