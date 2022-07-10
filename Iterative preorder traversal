@@ -1,5 +1,6 @@
 Take a stack, push first node (root) into the stack then push root->right into the stack and then left and so on.
 // TC-O(N)  SC- O(N)
+
  vector<int> preorderTraversal(TreeNode* root) {
         vector<int>v;
         if(root==NULL) return v;
