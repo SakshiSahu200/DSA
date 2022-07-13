@@ -26,3 +26,37 @@
         }
         return ans;
     }
+
+/**************** METHOD 2 *****************/
+
+vector<vector<int>> levelOrder(TreeNode* root) {
+       
+       queue<TreeNode*>q;
+        vector<int>v;
+        vector<vector<int>>ans;
+         if(root==NULL) return ans;
+        q.push(root);
+        q.push(NULL);
+        while(q.size()>1)
+        {
+            TreeNode* k= q.front();
+            q.pop();
+            //v.push_back(k->val);
+            if(k==NULL)
+            {
+                ans.push_back(v);
+                v.clear();
+                q.push(NULL);
+                continue;
+            }
+            v.push_back(k->val);
+            if(k->left!=NULL)
+            q.push(k->left);
+            if(k->right!=NULL)
+              q.push(k->right);
+            
+        }
+        if(v.size()!=0)
+        ans.push_back(v);
+        return ans;
+    }
