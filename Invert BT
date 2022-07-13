@@ -1,0 +1,17 @@
+ void swap(TreeNode* root)
+    {
+        if(root==NULL) return;
+        swap(root->left);
+        swap(root->right);
+        
+        //swaping
+        TreeNode* temp;
+        temp= root->left;
+        root->left= root->right;
+        root->right= temp;
+        
+    }
+    TreeNode* invertTree(TreeNode* root) {
+        swap(root);
+        return root;
+        }
