@@ -1,0 +1,35 @@
+//frog can jump either 1 or 2 steps, calculate min energy required to reach nth step
+
+int f(int n, vector<int> &a)
+{
+    if(n==0) return 0;
+        int left= f(n-1,a)+ abs(a[n]-a[n-1]);
+    int right= INT_MAX;
+        if(n>1)
+            right=f(n-2,a)+ abs(a[n]-a[n-2]);
+        return min(left,right);
+}
+int frogJump(int n, vector<int> &heights)
+{
+    // Write your code here.
+    f(n-1,heights);
+}
+
+/************* Memoization  *****************/
+
+int f(int n, vector<int> &heights,vector<int>&dp)
+{
+    if(n==0) return 0;
+    if(dp[n]!=-1) return dp[n];
+        int left= f(n-1,heights,dp)+ abs(heights[n]-heights[n-1]);
+        int right= INT_MAX;
+        if(n>1)
+            right=f(n-2,heights,dp)+ abs(heights[n]-heights[n-2]);
+        return dp[n]= min(left,right);
+}
+int frogJump(int n, vector<int> &heights)
+{
+    // Write your code here.
+    vector<int>dp(n+1,-1);
+    return f(n-1,heights,dp);
+}
