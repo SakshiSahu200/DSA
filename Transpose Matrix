@@ -1,9 +1,29 @@
-
- vector<vector<int>> transpose(vector<vector<int>> A) {
-        int M = A.size(), N = A[0].size();
-        vector<vector<int>> B(N, vector<int>(M, 0));
-        for (int j = 0; j < N; j++)
-            for (int i = 0; i < M; i++)
-                B[j][i] = A[i][j];
-        return B;
+ void transpose(vector<vector<int> >& matrix, int n)
+    { 
+        // code here 
+        int temp[n][n];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                temp[i][j]= matrix[j][i];
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                matrix[i][j]= temp[i][j];
+            }
+        }
     }
+    
+    /**********************************
+    
+     for(int i=0;i<n;i++)
+        {
+           for(int j=i+1;j<n;j++)
+           {
+               swap(matrix[i][j],matrix[j][i]);
+           }
+        }
