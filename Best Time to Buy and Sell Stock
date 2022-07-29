@@ -1,6 +1,21 @@
  You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
  //given array  7 1 5 3 4 6
  o/p- 5
+ 
+ // The approach will be to keep the track of the minimum element and simulataneously find the difference of it from the curr element while traversing through the vector
+ 
+  int maxProfit(vector<int>& v) {
+        int minimal=v[0];
+        int dif=INT_MIN;
+        for(int i=0;i<v.size();i++)
+        {
+            minimal= min(v[i],minimal);
+            dif= max(dif,v[i]-minimal);
+        }
+        if(dif==INT_MIN) dif=0;
+        return dif;
+    }
+    /****************************************************************/
  calculating max from right side  7 6 6 6 6 6
  now subtract 2nd array/vector from first and print max diff as max profit
  //TC - O(n)
@@ -22,7 +37,7 @@
         return ans;
     }
     
-    
+    /********************************************************************************/
     // can track the max and min from starting for further optimization
     
     class Solution {
