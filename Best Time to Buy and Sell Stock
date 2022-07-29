@@ -1,4 +1,6 @@
+ You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
  //given array  7 1 5 3 4 6
+ o/p- 5
  calculating max from right side  7 6 6 6 6 6
  now subtract 2nd array/vector from first and print max diff as max profit
  //TC - O(n)
