@@ -5,6 +5,7 @@ Output: 7
  Logic: find the local maxima and minima....on local minima, we will purchase and sell it on local maxima
  further optimizing...buy it then sell it if it is greater than price on next day.
 ***********/
+MAKE SURE THAT NONE OF THE TWO TRANSACTIONS ARE OVERLAPPING
 
     int maxProfit(vector<int>& v) {
         int ans=0;
