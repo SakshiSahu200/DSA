@@ -1,0 +1,45 @@
+//Diameter - length of the longest path between any two nodes in a tree.
+  
+  int height(TreeNode* root)
+    {
+        if(root==NULL) return 0;
+        return 1+max(height(root->left),height(root->right));
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        if(root==NULL) return 0;
+        queue<TreeNode*>q;
+        int k=0;
+        q.push(root);
+        int ans=0;
+        while(!q.empty())
+        {
+            int lh=0,rh=0;
+            TreeNode* k= q.front();
+            q.pop();
+            if(k->left!=NULL){
+             lh= height(k->left);
+            q.push(k->left);}
+            if(k->right!=NULL){
+             rh= height(k->right);
+            q.push(k->right);}
+            ans=max(ans,lh+rh);
+            
+        }
+        return ans;
+    }
+    /***************************************************************/
+    
+    int height(TreeNode* node,int &k)
+    {
+        if(node==NULL) return 0;
+        int lh= height(node->left,k);
+        int rh= height(node->right,k);
+        k= max(k, lh+rh);
+        return 1+max(lh,rh);
+    }
+   
+    int diameterOfBinaryTree(TreeNode* root) {
+        int diameter =0;
+        height(root,diameter);
+        return diameter;
+    }
