@@ -1,0 +1,19 @@
+// calculate max of left and right array, then do  min(left[i],right[i])-v[i]
+//TC= O(N)
+
+int trap(vector<int>& v) {
+        int n=v.size();
+        int left[n],right[n];
+         left[0]=v[0]; right[n-1]=v[n-1];
+        for(int i=1;i<n;i++)
+        {
+            left[i]= max(left[i-1],v[i]);
+            right[n-i-1]= max(right[n-i],v[n-i-1]); 
+        }
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+            ans+= min(left[i],right[i]) - v[i];
+        }
+        return ans;
+    }
