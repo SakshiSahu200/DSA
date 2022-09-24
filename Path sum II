@@ -1,0 +1,27 @@
+Input: root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22
+Output: [[5,4,11,2],[5,8,4,5]]
+Explanation: There are two paths whose sum equals targetSum:
+5 + 4 + 11 + 2 = 22
+5 + 8 + 4 + 5 = 22
+
+
+void cal(int targetSum,TreeNode* root,vector<vector<int>>&ans, vector<int>&output)
+    {
+        if(root==NULL) return;
+         int x= root->val;  //5 
+        output.push_back(x); 
+        if(!root->left && !root->right && targetSum==x)
+        {
+            ans.push_back(output);
+        }
+        
+         cal(targetSum-x, root->left, ans, output);
+        cal(targetSum-x, root->right, ans, output);
+        output.pop_back();
+    }
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        vector<vector<int>>ans;
+        vector<int>output;
+        cal(targetSum, root, ans,output);
+        return ans;
+    }
