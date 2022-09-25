@@ -1,0 +1,47 @@
+    int *a;
+    int capacity;
+    int rear;
+    MyCircularQueue(int k) {
+        capacity = k;
+        a = new int[k];
+        rear =-1;
+    }
+    
+    bool enQueue(int value) {
+        if(capacity-1 ==rear) return false;
+        rear = rear+1;
+        a[rear] =value;
+        return true;
+    }
+    
+    bool deQueue() {
+        if(rear==-1) return false;
+        //int front=a[0];
+        for(int i=1;i<capacity;i++)
+        {
+            a[i-1]=a[i];
+        }
+        rear-=1;
+        return true;
+    }
+    
+    int Front() {
+        if(rear==-1) return -1;
+        return a[0];
+    }
+    
+    int Rear() {
+        if(rear==-1) return -1;
+        return a[rear];
+    }
+    
+    bool isEmpty() {
+        if(rear==-1) return true;
+        return false;
+    }
+    
+    bool isFull() {
+        if(rear==capacity-1 ) return true;
+        return false;
+        
+    }
