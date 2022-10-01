@@ -1,5 +1,5 @@
  You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
- //given array  7 1 5 3 4 6
+ //given array  7 1 5 3 6 4
  o/p- 5
  
  // The approach will be to keep the track of the minimum element and simulataneously find the difference of it from the curr element while traversing through the vector
