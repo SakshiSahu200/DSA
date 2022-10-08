@@ -7,4 +7,32 @@ Output: [[-1,-1,2],[-1,0,1]]
 Brute force- can use 3 for loops...from i, j= i+1, k= j+1....
 
 /************  Method -2 ********************
+Using 3 pointer approach , keeping first element fix, rest it will become like 2 sum problem  
+(TC- O(N^2))
 
+vector<vector<int>> threeSum(vector<int>& nums) {
+        // -1,0,1,2,-1,-4
+        vector<vector<int>>ans;
+       set<vector<int>>s;
+        int n= nums.size();
+        if(n==0) return ans;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n-2;i++)
+        {
+            int j= i+1,k=n-1;
+            while(j<k)
+            {
+                int sum= nums[j]+ nums[k];
+                if(sum== -nums[i])
+                {
+                    s.insert({nums[i],nums[j],nums[k]});
+                    j++; k--;
+                }
+                else if(sum > -nums[i]) k--;
+                else if(sum< -nums[i]) j++;
+            }
+        }
+        for(auto x:s)
+            ans.push_back(x);
+        return ans;
+    }
